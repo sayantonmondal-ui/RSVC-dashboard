@@ -1246,3 +1246,16 @@ def main():
 
 if __name__ == "__main__":
     main()
+    # At the top of main(), replace the "no upload" branch:
+import os
+
+DEFAULT_FILE = "122_COSTING_TECH.xlsx"
+
+if uploaded is not None:
+    raw_df = load_excel(uploaded.read())
+elif os.path.exists(DEFAULT_FILE):
+    with open(DEFAULT_FILE, "rb") as f:
+        raw_df = load_excel(f.read())
+else:
+    # fall back to built-in seed data
+    ...
